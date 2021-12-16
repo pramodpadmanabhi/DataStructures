@@ -10,20 +10,5 @@ namespace LinkedList
         }
     }
 
-    class DNode
-    {
-        private int data;
-        private Node prev;
-        private Node next;
-        public DNode(int d)
-        {
-            data = d;
-            next = null;
-            prev = null;
-        }
-    }
-    class DoublyLinkedList
-    {
-        Node head;
-    }
+ 
 }
