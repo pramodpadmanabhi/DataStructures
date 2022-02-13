@@ -78,6 +78,17 @@ namespace LinkedList
 
         }
 
+        /* Doubly Linked List Deletion
+        *  Can be divided into three sections
+        *  1) After the deletion of head node
+        *  2) After the deletion of middle node
+        *  3) After the deletion of last node
+
+        /* All the three cases can be handled if pointer of the node to be deleted and head node is known
+         *  1) If the node to be deleted is the head node the make the next node as head
+         *  2) If a node is deleted , connect the next and previous nodes of the deleted node
+         */
+
     }
 
 

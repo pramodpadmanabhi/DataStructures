@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.31702.278
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CP", "CP\CP.csproj", "{18EE54AE-1154-4FA3-B75E-0FDD2682301C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinkedList", "LinkedList\LinkedList.csproj", "{DB1C28BA-0F60-4F4D-B5BF-009DC15EE776}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LinkedList", "LinkedList\LinkedList.csproj", "{DB1C28BA-0F60-4F4D-B5BF-009DC15EE776}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algorithms", "Algorithms\Algorithms.csproj", "{DB2DA5EA-DBB5-41F9-B300-1FAAA819329F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{DB1C28BA-0F60-4F4D-B5BF-009DC15EE776}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB1C28BA-0F60-4F4D-B5BF-009DC15EE776}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DB1C28BA-0F60-4F4D-B5BF-009DC15EE776}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB2DA5EA-DBB5-41F9-B300-1FAAA819329F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB2DA5EA-DBB5-41F9-B300-1FAAA819329F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB2DA5EA-DBB5-41F9-B300-1FAAA819329F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB2DA5EA-DBB5-41F9-B300-1FAAA819329F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
