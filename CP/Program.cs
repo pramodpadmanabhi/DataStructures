@@ -56,7 +56,12 @@ namespace CP
             //ChefFixedDeposits();
             //Console.Write(isBalanced("{)[](}]}]}))}(())("));
 
-            Console.WriteLine(MajorityElement(new int[] {2,2,1,1,1,2,2}));
+
+            //Console.WriteLine(MajorityElement(new int[] {2,2,1,1,1,2,2}));
+
+            //Console.WriteLine(ContainsNearbyDuplicate(new int[] { 1, 2, 3, 1, 2, 3 }, 2));
+
+            Console.WriteLine(IsAnagram("car", "rac"));
 
             Console.ReadKey();
 
@@ -316,6 +321,7 @@ namespace CP
 
             return result;
         }
+        //CodeForces
         public static void KeplerLaw()
         {
             int[] array = new int[4] { 1, 8, 2, 8 };
@@ -332,6 +338,7 @@ namespace CP
             }
 
         }
+        //CodeForces
         public static void CovidCases()
         {
             int t = Convert.ToInt32(Console.ReadLine());
@@ -376,7 +383,6 @@ namespace CP
                 }
             }
         }
-
         public static void TCSExamination()
         {
             int t = Convert.ToInt32(Console.ReadLine());
@@ -446,14 +452,12 @@ namespace CP
             }
 
         }
-
         public static string FindGreater(int dragon, int sloth)
         {
             if (dragon > sloth) return "DRAGON";
             else if (dragon < sloth) return "SLOTH";
             return "TIE";
         }
-
         public static void ChefFixedDeposits()
         {
             int t = Convert.ToInt32(Console.ReadLine());
@@ -500,9 +504,13 @@ namespace CP
                 t--;
             }
         }
-
         public static void CryColor()
         {
+
+
+
+
+
             int t = Convert.ToInt32(Console.ReadLine());
             while (t > 0)
             {
@@ -532,7 +540,6 @@ namespace CP
             }
 
         }
-
         public static string isBalanced(string s)
         {
             Stack stack = new Stack();
@@ -587,14 +594,13 @@ namespace CP
                         }
                     }
                 }
-               
+
             }
             return "YES";
         }
-
         public static int MajorityElement(int[] nums)
         {
-            int n = (nums.Length)/2;
+            int n = (nums.Length) / 2;
             int maxEle = 0;
             Dictionary<int, int> dic = new Dictionary<int, int>();
             if (nums.Length == 1)
@@ -605,7 +611,7 @@ namespace CP
             {
                 if (!dic.ContainsKey(e))
                 {
-                    dic.Add(e,1);
+                    dic.Add(e, 1);
                 }
                 else
                 {
@@ -614,11 +620,105 @@ namespace CP
                     dic.TryGetValue(e, out value);
                     if (value > n)
                     {
-                       maxEle=e;
+                        maxEle = e;
                     }
                 }
             }
             return maxEle;
+        }
+        /*LeetCode
+        https://leetcode.com/problems/contains-duplicate-ii/
+        */
+        public static bool ContainsNearbyDuplicate(int[] nums, int k)
+        {
+            var dic = new Dictionary<int, int>();
+            bool result = false;
+            for (int i = 0; i < nums.Length; i++)
+            {
+
+                if (!dic.ContainsKey(nums[i]))
+                {
+                    dic.Add(nums[i], i);
+                }
+                else
+                {
+                    int prevIndex = dic[nums[i]];
+                    dic[nums[i]] = i;
+
+                    if (Math.Abs(prevIndex - i) <= k)
+                    {
+                        result = true;
+                    }
+                }
+            }
+            return result;
+        }
+        /* GFG
+         * https://www.geeksforgeeks.org/window-sliding-technique/
+         */
+        public static int maxSum(int[] arr, int n, int k)
+        {
+            if (n < k)
+            {
+                return -1;
+            }
+
+            //Find the Max uptp k elements in arr
+            int max_sum = 0;
+            for (int i = 0; i < k; i++)
+            {
+                max_sum += arr[i];
+            }
+            // Compute sums of remaining windows by
+            // removing first element of previous
+            // window and adding last element of
+            // current window.
+
+            int window_sum = max_sum;
+            for (int i = k; i < n; i++)
+            {
+                window_sum += arr[i] - arr[i - k];
+                max_sum = Math.Max(max_sum, window_sum);
+            }
+            return max_sum;
+        }
+        /* LeetCode
+         * https://leetcode.com/problems/valid-anagram/submissions/
+         * */
+        public static bool IsAnagram(string s, string t)
+        {
+            if (s.Length != t.Length)
+            {
+                return false;
+            }
+            var dic = new Dictionary<char, int>();
+            for (int i = 0; i < s.Length; i++)
+            {
+                dic[s[i]] = dic.ContainsKey(s[i]) ? (dic[s[i]] + 1) : 1;
+                //if (!dic.ContainsKey(s[i]))
+                //{
+                //    dic.Add(s[i], 1);
+                //}
+                //else
+                //{
+                //    dic[s[i]]++;
+                //}
+            }
+            for (int i = 0; i < t.Length; i++)
+            {
+                if (dic.ContainsKey(t[i]))
+                {
+                    dic[t[i]]--;
+                }
+            }
+            foreach (var d in dic)
+            {
+                if (d.Value > 0)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }
