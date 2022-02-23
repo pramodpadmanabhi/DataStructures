@@ -63,6 +63,8 @@ namespace CP
 
             Console.WriteLine(IsAnagram("car", "rac"));
 
+            Console.WriteLine(ReversofWords("My Name is John"));
+
             Console.ReadKey();
 
 
@@ -719,6 +721,32 @@ namespace CP
                 }
             }
             return true;
+        }
+
+        //print Reverse of Words
+        public static string ReversofWords(string input)
+        {
+            string result = "";
+            int end = input.Length - 1;
+            int start = 0;
+            for(int i = input.Length-1; i >=0; i--)
+            {
+                if (input[i]==' ')
+                {
+                    start = i + 1;
+                    for(int j = start; j <= end; j++)
+                    {
+                        result += input[j];
+                    }
+                    result += " ";
+                    end = start - 1;
+                }
+            }
+            for(int j = 0; j <= end; j++)
+            {
+                result += input[j];
+            }
+            return result;
         }
     }
 }
