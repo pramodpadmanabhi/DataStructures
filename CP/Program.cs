@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Trees;
 
 namespace CP
 {
@@ -10,7 +11,6 @@ namespace CP
         {
             //Console.WriteLine("Hello World!");
             //longestCommonPrefix();
-
             //Stack stack = new Stack();
             //TLG();
             //List<string> magazine = new List<string>();
@@ -21,20 +21,15 @@ namespace CP
             //magazine.Add("is");
             //magazine.Add("not");
             //magazine.Add("four");
-
             //note.Add("two");
             //note.Add("times");
             //note.Add("two");
             //note.Add("is");
             //note.Add("four");
-
             //checkMagazine(magazine,note);
             //Console.WriteLine(ContainsDuplicate(new[] { 1, 1, 3, 4 }));
-
             //MaxSubArray(new[] { -2, 1, -3, 4, -1, 2, 1, -5, 4 });
-
             //Merge(new[] { 1, 2, 3, 0, 0, 0 }, 6, new[] { 2, 3, 5 }, 3);
-
             //ReverseStringStack("GeeksforGeeks");
             //var result= BalanceExpression(")){}[]");
             //if (result == true)
@@ -44,26 +39,22 @@ namespace CP
             //else
             //{
             //    Console.WriteLine("Unbalanced Expression");
-
             //}
             //LongestCommonPrefix();
-
             //KeplerLaw();
             //CovidCases();
-
             //TCSExamination();
-
             //ChefFixedDeposits();
             //Console.Write(isBalanced("{)[](}]}]}))}(())("));
-
-
             //Console.WriteLine(MajorityElement(new int[] {2,2,1,1,1,2,2}));
-
             //Console.WriteLine(ContainsNearbyDuplicate(new int[] { 1, 2, 3, 1, 2, 3 }, 2));
+            //Console.WriteLine(IsAnagram("car", "rac"));
+            //Console.WriteLine(ReversofWords("My Name is John"));
 
-            Console.WriteLine(IsAnagram("car", "rac"));
+            SmallestNearLeft();
 
-            Console.WriteLine(ReversofWords("My Name is John"));
+            //Tree tree = new Tree();
+            //tree.CreateTree();
 
             Console.ReadKey();
 
@@ -747,6 +738,29 @@ namespace CP
                 result += input[j];
             }
             return result;
+        }
+        public static void SmallestNearLeft()
+        {
+            int[] arr = { 1, 3, 0, 2, 5 };
+            Stack<int> s = new Stack<int>();
+
+            for(int i = 0; i < arr.Length; i++)
+            {
+                while(s.Count!=0 && s.Peek() >= arr[i])
+                {
+                    s.Pop();
+                }
+                if (s.Count == 0)
+                {
+                    Console.WriteLine("-1");
+                }
+                else
+                {
+                    Console.WriteLine(s.Peek());
+                }
+
+                s.Push(arr[i]);
+            }
         }
     }
 }
