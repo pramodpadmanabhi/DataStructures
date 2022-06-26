@@ -51,10 +51,18 @@ namespace CP
             //Console.WriteLine(IsAnagram("car", "rac"));
             //Console.WriteLine(ReversofWords("My Name is John"));
 
-            SmallestNearLeft();
+            //SmallestNearLeft();
 
             //Tree tree = new Tree();
             //tree.CreateTree();
+
+            //SixFriends();
+
+            //RemoveDuplicates();
+
+            //int[] nums = new int[] { 12, -1, -7, 8, -15, 30, 16, 28 };
+            //FirstNegativeNumber(nums, 3);
+            //DistinctElements();
 
             Console.ReadKey();
 
@@ -720,12 +728,12 @@ namespace CP
             string result = "";
             int end = input.Length - 1;
             int start = 0;
-            for(int i = input.Length-1; i >=0; i--)
+            for (int i = input.Length - 1; i >= 0; i--)
             {
-                if (input[i]==' ')
+                if (input[i] == ' ')
                 {
                     start = i + 1;
-                    for(int j = start; j <= end; j++)
+                    for (int j = start; j <= end; j++)
                     {
                         result += input[j];
                     }
@@ -733,7 +741,7 @@ namespace CP
                     end = start - 1;
                 }
             }
-            for(int j = 0; j <= end; j++)
+            for (int j = 0; j <= end; j++)
             {
                 result += input[j];
             }
@@ -744,9 +752,9 @@ namespace CP
             int[] arr = { 1, 3, 0, 2, 5 };
             Stack<int> s = new Stack<int>();
 
-            for(int i = 0; i < arr.Length; i++)
+            for (int i = 0; i < arr.Length; i++)
             {
-                while(s.Count!=0 && s.Peek() >= arr[i])
+                while (s.Count != 0 && s.Peek() >= arr[i])
                 {
                     s.Pop();
                 }
@@ -760,6 +768,162 @@ namespace CP
                 }
 
                 s.Push(arr[i]);
+            }
+        }
+        public static void SixFriends()
+        {
+            int t = Convert.ToInt32(Console.ReadLine().Split(' ')[0]);
+            while (t > 0)
+            {
+                var nums = Console.ReadLine();
+                int x = Convert.ToInt32(nums.Split(' ')[0]);
+                int y = Convert.ToInt32(nums.Split(' ')[1]);
+                int dRoomCost = 3 * x;
+                int trRoomCost = 2 * y;
+                if (dRoomCost < trRoomCost)
+                {
+                    Console.WriteLine(dRoomCost);
+                }
+                else
+                {
+                    Console.WriteLine(trRoomCost);
+
+                }
+                t--;
+
+            }
+        }
+        public static int RemoveDuplicates()
+        {
+            int[] nums = new int[] { 1, 1,1, 2, 3, 3 };
+
+            for (int i = 2; i < nums.Length; i++)
+            {
+                if (nums[i] == nums[i - 2])
+                {
+                    nums[i] = '_';
+                    for (int j = i; j < nums.Length - 1; j++)
+                    {
+                        int temp = nums[j + 1];
+                        nums[j + 1] = nums[i];
+                        nums[i] = temp;
+                    }
+
+                    for (int k = 0; k < nums.Length; k++)
+                    {
+                        Console.WriteLine(nums[k]);
+                    }
+
+                }
+            }
+            int count = 0;
+            for (int i = 0; i < nums.Length; i++)
+            {
+                if (nums[i] == 95)
+                {
+                    break;
+                }
+                else
+                {
+                    count++;
+                }
+            }
+            return count;
+
+        }
+        public static void DistinctElements()
+        {
+            //int[] nums = new int[] { 1, 2, 1, 3, 4, 2, 3 };
+            int[] nums = new int[] { 4,1,1};
+            int k = 2;
+            var dic = new Dictionary<int, int>();
+            int i = 0, j = 0, count = 0;
+            while (j < nums.Length)
+            {
+                if (j - i + 1 == k)
+                {
+                    if (!dic.ContainsKey(nums[j]))
+                    {
+                        dic.Add(nums[j], 1);
+                        count++;
+                    }
+                    Console.WriteLine(count);
+                    dic.Clear();
+                    i++;
+                    j = i;
+                    count = 0;
+                }
+                else
+                {
+                    if (!dic.ContainsKey(nums[j]))
+                    {
+                        dic.Add(nums[j], 1);
+                        count++;
+                    }
+                    j++;
+                }
+            }
+            int ele=dic[0];
+
+        }
+        public static int circularArray(int n, List<int> endNode)
+        {
+            var dictionary = new Dictionary<int, int>();
+
+            int result = 0;
+            dictionary.TryGetValue(1, out result);
+
+            for (int i = 0; i < endNode.Count; i++)
+            {
+                if (!dictionary.ContainsKey(endNode[i]))
+                {
+                    dictionary.Add(endNode[i],1);
+                }
+                else
+                {
+                    dictionary[endNode[i]]++;
+                }
+            }
+            int max = 0;
+            int ele = 0;
+            foreach (var keyvalue in dictionary)
+            {
+                if (keyvalue.Value > max)
+                {
+                    max = keyvalue.Value;
+                    ele = keyvalue.Key;
+                }
+            }
+            return ele;
+        }
+        //CodeChef Daily Challenge
+        public static void Attendence()
+        {
+            int n = Convert.ToInt32(Console.ReadLine());
+            List<string[]> result = new List<string[]>();
+            var dic = new Dictionary<string, int>();
+            while (n > 0)
+            {
+                var name = Console.ReadLine().Split(' ');
+                result.Add(name);
+                if (!dic.ContainsKey(name[0]))
+                {
+                    dic.Add(name[0], 1);
+                }
+                else
+                {
+                    dic[name[0]]++;
+                }
+                n--;
+            }
+            foreach (var item in result)
+            {
+                int count = 0;
+                dic.TryGetValue(item[0], out count);
+                if (count > 1)
+                    Console.WriteLine(item[0] + " " + item[1]);
+                else
+                    Console.WriteLine(item[0]);
             }
         }
     }
